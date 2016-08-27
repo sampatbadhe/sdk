@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 gem 'rails', '5.0.0.1'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin', github: 'activeadmin'
 gem 'coffee-rails'
 gem 'devise'
 gem 'jquery-rails'
