@@ -4,8 +4,10 @@ class Members::RegistrationsController < Devise::RegistrationsController
 
 #   GET /resource/sign_up
   def new
-    super
+    @region = Region.all
+    @societies = Society.all
     @member = Member.new
+    super
   end
 
 #   POST /resource

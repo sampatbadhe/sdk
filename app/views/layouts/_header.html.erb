@@ -16,8 +16,8 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
       	<li class="active"><%= link_to nil ? "Hello, #{nil .to_s.capitalize}!" : "Hello, Guest!", nil %></li>
-       <% if nil   %>
-					<li> <%= link_to "Logout", destroy_member_session_path, method: :delete %> </li>
+       <% if current_member  %>
+					<li> <%= link_to "Logout", destroy_session_path(current_member), method: :delete %> </li>
 				<% else %>
 					<li> <%= link_to "Log in", new_member_session_path %> </li>
           <li><a>|</a></li>
