@@ -13,4 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require jquery
+//= require bootstrap-sprockets
+
+$(document).on('click', "#sidebarButton", toggleThings);
+$(window).on('resize', function(){
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      toggleThings();
+    }
+});
+function toggleThings() {
+  $("#bar1, #bar2, #bar3, .sidebar, .main, #sidebarButton").toggleClass("toggle");
+}

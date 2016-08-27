@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'pg'
 gem 'puma'
+gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'turbolinks', '~> 5'
