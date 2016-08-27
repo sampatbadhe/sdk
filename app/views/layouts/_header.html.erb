@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+      <button class="nav" id="sidebarButton">
+      <span id="bar1" class="icon-bar toggle"></span>
+      <span id="bar2" class="icon-bar toggle"></span>
+      <span id="bar3" class="icon-bar toggle"></span>
+      </button>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <a>Menu
+          <span class="caret"></span>
+        </a>
+      </button>
+      <a class="navbar-brand" href="/">SDK</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+      	<li class="active"><%= link_to nil ? "Hello, #{nil .to_s.capitalize}!" : "Hello, Guest!", nil %></li>
+       <% if nil   %>
+					<li> <%= link_to "Logout", member_logout_path, method: :delete %> </li>
+				<% else %>
+					<li> <%= link_to "Log in", member_session_path %> </li>
+          <li><a>|</a></li>
+          <li> <%= link_to "Sign up", member_session_path %> </li>
+       <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
