@@ -17,8 +17,8 @@
 //= require jquery
 //= require bootstrap-sprockets
 
-$(document).on('ready page:load',function(){
-	$("#sidebarButton").click(toggleThings);
+$(document).ready(function() {
+  $("#sidebarButton").on('click', toggleThings);
 });
 $(window).on('resize', function(){
     if (window.matchMedia('(max-width: 768px)').matches) {

@@ -17,11 +17,11 @@
       <ul class="nav navbar-nav navbar-right">
       	<li class="active"><%= link_to nil ? "Hello, #{nil .to_s.capitalize}!" : "Hello, Guest!", nil %></li>
        <% if nil   %>
-					<li> <%= link_to "Logout", member_logout_path, method: :delete %> </li>
+					<li> <%= link_to "Logout", destroy_member_session_path, method: :delete %> </li>
 				<% else %>
-					<li> <%= link_to "Log in", member_session_path %> </li>
+					<li> <%= link_to "Log in", new_member_session_path %> </li>
           <li><a>|</a></li>
-          <li> <%= link_to "Sign up", member_session_path %> </li>
+          <li> <%= link_to "Sign up", new_member_registration_path %> </li>
        <% end %>
       </ul>
     </div>
