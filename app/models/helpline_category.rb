@@ -1,0 +1,2 @@
+class HelplineCategory < ApplicationRecord
+end
