@@ -77,11 +77,12 @@ ActiveRecord::Schema.define(version: 20160827134537) do
     t.integer  "society_id"
     t.string   "title"
     t.string   "description"
-    t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "status",      default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["member_id"], name: "index_topics_on_member_id", using: :btree
     t.index ["society_id"], name: "index_topics_on_society_id", using: :btree
+    t.index ["status"], name: "index_topics_on_status", using: :btree
   end
 
   add_foreign_key "comments", "members"

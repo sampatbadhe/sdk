@@ -5,7 +5,7 @@ class CreateTopics < ActiveRecord::Migration[5.0]
       t.references :society, foreign_key: true
       t.string :title
       t.string :description
-      t.string :status
+      t.integer :status, default: 0, index: true
       t.timestamps
     end
   end
