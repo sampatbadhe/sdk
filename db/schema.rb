@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827133229) do
+ActiveRecord::Schema.define(version: 20160827134537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.integer  "member_id"
+    t.text     "content"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+    t.index ["member_id"], name: "index_comments_on_member_id", using: :btree
+  end
 
   create_table "helpline_categories", force: :cascade do |t|
     t.string   "name"
@@ -73,6 +84,7 @@ ActiveRecord::Schema.define(version: 20160827133229) do
     t.index ["society_id"], name: "index_topics_on_society_id", using: :btree
   end
 
+  add_foreign_key "comments", "members"
   add_foreign_key "helplines", "helpline_categories"
   add_foreign_key "helplines", "regions"
   add_foreign_key "members", "societies"
