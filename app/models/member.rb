@@ -8,6 +8,7 @@ class Member < ApplicationRecord
   has_many :topics
   has_many :comments
   validates :email, :first_name, :last_name, :phone_number, :society, presence: true
+  delegate :region_id, to: :society, allow_nil: true
 
   def to_s
     "#{first_name} #{last_name}".to_s.capitalize

@@ -1,7 +1,7 @@
 class Members::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :set_society, only: [:new, :create]
+  before_action :set_societies_and_regions, only: [:new, :create]
 
   #   GET /resource/sign_up
   #   def new
@@ -39,8 +39,9 @@ class Members::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def set_society
+  def set_societies_and_regions
     @societies = Society.all
+    @regions = Region.all
   end
 
   #   If you have extra params to permit, append them to the sanitizer.
