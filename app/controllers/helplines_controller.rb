@@ -14,7 +14,7 @@ class HelplinesController < ApplicationController
 
   # GET /helplines/new
   def new
-    @helpline = Helpline.new
+    @helpline = current_region.helplines.new
   end
 
   # GET /helplines/1/edit
@@ -24,7 +24,7 @@ class HelplinesController < ApplicationController
   # POST /helplines
   # POST /helplines.json
   def create
-    @helpline = Helpline.new(helpline_params)
+    @helpline = current_region.helplines.build(helpline_params)
 
     respond_to do |format|
       if @helpline.save
@@ -69,6 +69,6 @@ class HelplinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def helpline_params
-      params.fetch(:helpline, {})
+      params.require(:helpline).permit(:name, :address, :phone_number, :mobile_number, :helpline_category_id)
     end
 end
