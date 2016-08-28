@@ -39,4 +39,6 @@
 
 <br>
 
-<%= link_to 'New Helpline', new_helpline_path %>
+<% if(current_member.is_secretary?) %>
+  <%= link_to 'New Helpline', new_helpline_path %>
+<%end%>

@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_helpline_path(@helpline) %> |
+<% if(current_member.is_secretary?) %>
+  <%= link_to 'Edit', edit_helpline_path(@helpline) %> |
+<% end %>
 <%= link_to 'Back', helplines_path %>

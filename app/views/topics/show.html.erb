@@ -2,5 +2,7 @@
 <p><%= @topic.title %></p>
 <p><%= @topic.description %></p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<% if(current_member.is_secretary? || ( topic.member == current_member)) %>
+  <%= link_to 'Edit', edit_topic_path(@topic) %> |
+<% end %>
 <%= link_to 'Back', topics_path %>
