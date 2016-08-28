@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<p> Month :<%= @maintenance_receipt.month %></p>
+<p> Year : <%= @maintenance_receipt.year %></p>
+<p> Receipt : <%= link_to @maintenance_receipt.receipt.original_filename, @maintenance_receipt.receipt.url, target: '_blank' %></p>
+<% if(current_member.is_secretary?) %>
+  <%= link_to 'Edit', edit_maintenance_receipt_path(@maintenance_receipt) %> |
+<% end %>
+<%= link_to 'Back', maintenance_receipts_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827194014) do
+ActiveRecord::Schema.define(version: 20160828092813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,19 @@ ActiveRecord::Schema.define(version: 20160827194014) do
     t.index ["region_id"], name: "index_helplines_on_region_id", using: :btree
   end
 
+  create_table "maintenance_receipts", force: :cascade do |t|
+    t.integer  "month"
+    t.integer  "year"
+    t.integer  "society_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "receipt_file_name"
+    t.string   "receipt_content_type"
+    t.integer  "receipt_file_size"
+    t.datetime "receipt_updated_at"
+    t.index ["society_id"], name: "index_maintenance_receipts_on_society_id", using: :btree
+  end
+
   create_table "members", force: :cascade do |t|
     t.integer  "phone_number"
     t.string   "first_name"
@@ -131,6 +144,7 @@ ActiveRecord::Schema.define(version: 20160827194014) do
   add_foreign_key "comments", "members"
   add_foreign_key "helplines", "helpline_categories"
   add_foreign_key "helplines", "regions"
+  add_foreign_key "maintenance_receipts", "societies"
   add_foreign_key "members", "societies"
   add_foreign_key "topics", "members"
   add_foreign_key "topics", "societies"

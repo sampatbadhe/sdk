@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
   resources :topics
   resources :helplines
+  resources :maintenance_receipts
 
   get "members", to: "members#home", as: :home
 
