@@ -3,22 +3,13 @@
 
 <% @topics.each do |topic| %>
   <div class="row">
-    <% if current_member.is_secretary? %>
-      <div class="col-sm-10">
-        <%= render 'topic', topic: topic %>
-      </div>
-      <div class="col-sm-2">
-        <%= render 'topic_actions', topic: topic %>
-      </div>
-    <% else %>
+    <div class="col-sm-10">
       <%= render 'topic', topic: topic %>
-    <% end %>
+    </div>
+    <div class="col-sm-2">
+      <%= render 'topic_actions', topic: topic %>
+    </div>
   </div>
-  <%= link_to 'Show', topic %>
-  <% if(current_member.is_secretary? || ( topic.member == current_member)) %>
-    <%= link_to 'Edit', edit_topic_path(topic) %>
-    <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }%>
-  <%end%>
 <% end %>
 
 <%= link_to 'New Topic', new_topic_path %>

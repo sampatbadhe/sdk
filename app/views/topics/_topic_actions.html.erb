@@ -1,13 +1,24 @@
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    <%= topic.status %>
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-  <% Topic.statuses.each do |key, val| %>
-    <li class="<%= topic.status == key ? 'active' : '' %>">
-      <%= link_to key, "topic_status/#{topic.id}/#{key}", method: :patch, id: "#{topic.id}_#{key}", remote: true %>
-    </li>
-	<% end %>
-  </ul>
-</div>
+<% if current_member.is_secretary? %>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <%= topic.status.titleize %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <% Topic.statuses.each do |key, val| %>
+      <li class="<%= topic.status == key ? 'active' : '' %>">
+        <%= link_to key.titleize, "topic_status/#{topic.id}/#{key}", method: :patch, id: "#{topic.id}_#{key}", remote: true %>
+      </li>
+  	<% end %>
+    </ul>
+  </div>
+  <% else %>
+   <button class="btn btn-disabled" type="button">
+     <%= topic.status.titleize %>
+   </button>
+<% end %>
+
+<% if topic.member == current_member %>
+  <%= link_to 'Edit', edit_topic_path(topic), class: 'btn btn-link' %>
+  <%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link'%>
+<%end%>
