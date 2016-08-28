@@ -62,6 +62,18 @@ class TopicsController < ApplicationController
     end
   end
 
+  def comments
+    topic = Topic.find params[:id]
+    @comments = topic.comments
+    @new_comment = topic.comments.build(member: current_member)
+  end
+
+  def update_status
+    topic = Topic.find(params[:topic_id])
+    topic.send("#{params[:status]}!")
+    @element_id = "#{params[:topic_id]}_#{params[:status]}"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_topic

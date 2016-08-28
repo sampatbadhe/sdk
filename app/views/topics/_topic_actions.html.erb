@@ -1,0 +1,13 @@
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <%= topic.status %>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+  <% Topic.statuses.each do |key, val| %>
+    <li class="<%= topic.status == key ? 'active' : '' %>">
+      <%= link_to key, "topic_status/#{topic.id}/#{key}", method: :patch, id: "#{topic.id}_#{key}", remote: true %>
+    </li>
+	<% end %>
+  </ul>
+</div>

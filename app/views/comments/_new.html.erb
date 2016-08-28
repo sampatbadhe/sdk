@@ -1,0 +1,13 @@
+<%= form_for(comment, remote: true) do |f| %>
+  <div class="row form-group">
+  	<div class="col-sm-9">
+  		<%= f.text_field :content, placeholder: 'Add comment and press enter', class: 'form-control' %>
+  	</div>
+    <%= f.hidden_field :member_id, value: comment.member.id %>
+    <%= f.hidden_field :commentable_id, value: comment.commentable.id %>
+    <%= f.hidden_field :commentable_type, value: comment.commentable.class.name %>    
+  	<div class="col-sm-3 actions">
+      <%= f.submit 'comment', class: 'btn btn-primary' %> 
+    </div>
+  </div>
+<% end %>

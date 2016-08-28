@@ -1,0 +1,2 @@
+$('#CommentModal').find('.modal-body').append("<%= escape_javascript(render('shared/comment_box', comments: [@new_comment])) %>")
+$('#CommentModal').find('.modal-title').html("Comments <%= @new_comment.commentable.comments.count %>")
