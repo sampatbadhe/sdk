@@ -1,0 +1,52 @@
+<%= form_for(helpline) do |f| %>
+  <% if helpline.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(helpline.errors.count, "error") %> prohibited this helpline from being saved:</h2>
+
+      <ul>
+      <% helpline.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :helpline_category %>
+    <%= f.select :helpline_category_id, options_from_collection_for_select(HelplineCategory.all, :id, :name, helpline.helpline_category_id.to_i), class: "form-control", placeholder: "Select your helpline category" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :region %>
+    <%= f.select :region_id, options_from_collection_for_select(Region.all, :id, :name, helpline.region_id.to_i), class: "form-control", placeholder: "Select your region" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Enter Name" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control", placeholder: "Enter Address" %>
+  </div>
+
+    <div class="form-group">
+      <%= f.label :email_address %>
+      <%= f.email_field :email_address, class: "form-control", placeholder: "Valid email under 255 characters" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number, class: "form-control", placeholder: "not more than 10 digits" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :mobile_number %>
+      <%= f.text_field :mobile_number, class: "form-control", placeholder: "not more than 10 digits" %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

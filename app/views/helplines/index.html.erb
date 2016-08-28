@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Helplines</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Address </th>
+      <th> Phone Number </th>
+      <th> Mobile Number </th>
+      <th> Email Address </th>
+      <th> Region </th>
+      <th> Category </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @helplines.each do |helpline| %>
+      <tr>
+        <td><%= helpline.name %></td>
+        <td><%= helpline.address %></td>
+        <td><%= helpline.phone_number %></td>
+        <td><%= helpline.mobile_number %></td>
+        <td><%= helpline.email_address %></td>
+        <td><%= helpline.region.to_s %></td>
+        <td><%= helpline.helpline_category.to_s %></td>
+        <td><%= link_to 'Show', helpline %></td>
+        <% if(current_member.is_secretary?) %>
+          <td><%= link_to 'Edit', edit_helpline_path(helpline) %></td>
+          <td><%= link_to 'Destroy', helpline, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+  <%= will_paginate @helplines, renderer: BootstrapPagination::Rails %>
+</table>
+
+<br>
+
+<%= link_to 'New Helpline', new_helpline_path %>
