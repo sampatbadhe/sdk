@@ -17,12 +17,12 @@
 
   <div class="form-group">
     <%= f.label :month %>
-    <%= f.text_field :month, class: "form-control", placeholder: "Enter Title" %>
+    <%= f.select :month, (1)..(12) %>
   </div>
 
   <div class="form-group">
     <%= f.label :year %>
-    <%= f.text_field :year, class: "form-control", placeholder: "Enter Title" %>
+    <%= f.select :year, (Time.zone.now.year - 5)..(Time.zone.now.year) %>
   </div>
 
   <div class="actions">
