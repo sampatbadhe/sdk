@@ -19,9 +19,17 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
 end
