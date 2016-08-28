@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = current_member.society.topics
+    @topics = current_society.topics.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /topics/1

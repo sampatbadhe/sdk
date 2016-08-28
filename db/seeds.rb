@@ -13,7 +13,7 @@ end
 
 (1..3).each do |number|
   Helpline.where(region_id: number,
-    helpline_category_id: HelplineCategory.where(name: "Plumber"),
+    helpline_category_id: HelplineCategory.where(name: "Plumber").first.id,
     name: "Karan Valecha",
     address: "Ulhasnagar",
     phone_number: "1234567890",
@@ -21,7 +21,7 @@ end
     email_address: "karan.valecha@kiprosh.com").first_or_create
 
   Helpline.where(region_id: number,
-    helpline_category_id: HelplineCategory.where(name: "Electrician"),
+    helpline_category_id: HelplineCategory.where(name: "Electrician").first.id,
     name: "Rohan Pujari",
     address: "Ghatkopar",
     phone_number: "1234567890",
@@ -29,7 +29,7 @@ end
     email_address: "rohan.pujari@kiprosh.com").first_or_create
 
   Helpline.where(region_id: number,
-    helpline_category_id: HelplineCategory.where(name: "Ambulance"),
+    helpline_category_id: HelplineCategory.where(name: "Ambulance").first.id,
     name: "Punit Jain",
     address: "Andheri",
     phone_number: "1234567890",
@@ -37,7 +37,7 @@ end
     email_address: "punit.jain@kiprosh.com").first_or_create
 
   Helpline.where(region_id: number,
-    helpline_category_id: HelplineCategory.where(name: "Doctor"),
+    helpline_category_id: HelplineCategory.where(name: "Doctor").first.id,
     name: "Sagar Pathak",
     address: "Sakinaka",
     phone_number: "1234567890",

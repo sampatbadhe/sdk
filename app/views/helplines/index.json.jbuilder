@@ -1,0 +1,1 @@
+json.array! @helplines, partial: 'helplines/helpline', as: :helpline

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     registrations: 'members/registrations'
   }
   resources :topics
+  resources :helplines
 
   get "members", to: "members#home", as: :home
 
