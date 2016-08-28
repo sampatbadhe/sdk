@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   }
   resources :topics
   resources :helplines
+  resources :comments
+
+  get '/topic_comments/:id' => 'topics#comments', as: :topic_comments
+  patch '/topic_status/:topic_id/:status' => 'topics#update_status', as: :topic_status
 
   get "members", to: "members#home", as: :home
 

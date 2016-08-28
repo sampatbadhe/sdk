@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        format.html { redirect_to topics_path, notice: 'Topic was successfully created.' }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -60,6 +60,18 @@ class TopicsController < ApplicationController
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def comments
+    topic = Topic.find params[:id]
+    @comments = topic.comments
+    @new_comment = topic.comments.build(member: current_member)
+  end
+
+  def update_status
+    topic = Topic.find(params[:topic_id])
+    topic.send("#{params[:status]}!")
+    @element_id = "#{params[:topic_id]}_#{params[:status]}"
   end
 
   private

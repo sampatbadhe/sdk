@@ -1,0 +1,4 @@
+$('#CommentModal').find('.modal-title').html("Comments <%= @comments.count %>")
+$('#CommentModal').find('.modal-footer').html("<%= escape_javascript(render('comments/new', comment: @new_comment)) %>")
+$('#CommentModal').find('.modal-body').html("<%= escape_javascript(render('shared/comment_box', comments: @comments.reload)) %>")
+$('#CommentModal').modal()

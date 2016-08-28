@@ -1,0 +1,15 @@
+<% comments.each do |comment| %>
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="<%= comment.member.gravatar_url %>" alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <p class="media-heading"><%= comment.member %> - 
+        <small><%= "#{time_ago_in_words(comment.created_at)} ago"%></small>
+        </p>
+      <h5> <%= comment.content %> </h5>
+    </div>
+  </div>
+<% end  %>
