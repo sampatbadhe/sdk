@@ -19,7 +19,7 @@
         <% if current_member  %>
           <li> <%= link_to "Logout", destroy_session_path(current_member), method: :delete %> </li>
         <% else %>
-					<li> <%= link_to "Log in", new_member_session_path %> </li>
+          <li> <%= link_to "Log in", new_member_session_path %> </li>
           <li><a>|</a></li>
           <li> <%= link_to "Sign up", new_member_registration_path %> </li>
        <% end %>

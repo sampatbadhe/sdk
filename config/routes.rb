@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     sessions: 'members/sessions',
     registrations: 'members/registrations'
   }
+  resources :topics
+
+  get "members", to: "members#home", as: :home
 
   root to: 'members#home'
 end
