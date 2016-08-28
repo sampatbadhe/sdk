@@ -1,0 +1,6 @@
+<div class="list-group">
+<%= link_to topic_comments_path(topic), remote: true, class: "list-group-item" do %>
+  <span class="list-group-item-heading topic-title"><%= topic.title %></span> <span class="label label-default"><%= "#{time_ago_in_words(topic.created_at)} ago"%></span>
+  <h5 class="list-group-item-text"><%= topic.description %> </h5>
+<% end %>
+</div>
