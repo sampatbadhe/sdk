@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   }
   resources :topics
   resources :helplines
+  resources :maintenance_receipts
   resources :comments
 
   get '/topic_comments/:id' => 'topics#comments', as: :topic_comments

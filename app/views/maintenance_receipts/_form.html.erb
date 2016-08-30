@@ -1,0 +1,32 @@
+<%= form_for(maintenance_receipt) do |f| %>
+  <% if maintenance_receipt.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(maintenance_receipt.errors.count, "error") %> prohibited this maintenance_receipt from being saved:</h2>
+
+      <ul>
+      <% maintenance_receipt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :receipt %>
+    <%= f.file_field :receipt, class: 'form-control', accept: 'application/pdf'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :month %>
+    <%= f.select :month, (1)..(12), selected: Time.zone.now.month %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :year %>
+    <%= f.select :year, (Time.zone.now.year - 5)..(Time.zone.now.year), selected: Time.zone.now.year %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit nil, class: "btn btn-primary" %>
+  </div>
+<% end %>
+</br>

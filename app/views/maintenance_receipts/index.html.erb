@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Maintenance Receipts</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> Month </th>
+      <th> Year </th>
+      <th> Receipt </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @maintenance_receipts.each do |maintenance_receipt| %>
+      <tr>
+        <td><%= maintenance_receipt.month %></td>
+        <td><%= maintenance_receipt.year %></td>
+        <td><%= link_to maintenance_receipt.receipt.original_filename, maintenance_receipt.receipt.url, target: '_blank' %></td>
+        <td><%= link_to 'Show', maintenance_receipt %></td>
+        <% if(current_member.is_secretary?) %>
+          <td><%= link_to 'Edit', edit_maintenance_receipt_path(maintenance_receipt) %></td>
+          <td><%= link_to 'Destroy', maintenance_receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if(current_member.is_secretary?) %>
+  <%= link_to 'New Maintenance Receipt', new_maintenance_receipt_path, class: "btn btn-link" %>
+<% end %>

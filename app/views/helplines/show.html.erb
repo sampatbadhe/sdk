@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<p> Name :<%= @helpline.name %></p>
+<p> Address : <%= @helpline.address %></p>
+<p> Phone Number : <%= @helpline.phone_number %></p>
+<p> Mobile Number : <%= @helpline.mobile_number %></p>
+<p> Email Address : <%= @helpline.email_address %></p>
+<p> Region : <%= @helpline.region %></p>
+<p> Category : <%= @helpline.helpline_category %></p>
 <% if(current_member.is_secretary?) %>
-  <%= link_to 'Edit', edit_helpline_path(@helpline) %> |
+  <%= link_to 'Edit', edit_helpline_path(@helpline), class: "btn btn-link" %> |
 <% end %>
-<%= link_to 'Back', helplines_path %>
+<%= link_to 'Back', helplines_path, class: "btn btn-link" %>
